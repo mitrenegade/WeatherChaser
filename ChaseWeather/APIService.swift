@@ -25,9 +25,9 @@ class APIService {
         var path: String {
             switch self {
             case .weather:
-                return "data/2.5/weather"
+                return "/data/2.5/weather/"
             case .geocoding:
-                return "geo/1.0/direct"
+                return "/geo/1.0/direct/"
             }
         }
     }
