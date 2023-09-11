@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
 
-        let vc = ViewController()
+        let apiService = APIService()
+        let vc = ViewController(apiService: apiService)
         window?.rootViewController = vc
     }
 

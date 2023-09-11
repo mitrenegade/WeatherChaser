@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weather: Codable {
+struct WeatherDetail: Codable {
     let id: Int
     let main: String
     let description: String
@@ -40,7 +40,7 @@ struct System: Codable {
     let sunset: TimeInterval
 }
 
-struct CityWeather: Codable {
+struct Weather: Codable {
 
     // decode top level properties
     let name: String
@@ -51,7 +51,7 @@ struct CityWeather: Codable {
 
     // decode top level objects
     let coord: Location
-    let weather: [Weather]
+    let weather: [WeatherDetail]
     let wind: Wind
     let main: TemperaturePressure
 
@@ -81,7 +81,7 @@ struct CityWeather: Codable {
 
 }
 
-extension CityWeather: CustomStringConvertible {
+extension Weather: CustomStringConvertible {
     var description: String {
         var string = """
         The weather in \(name) is \(weather.first?.description ?? "unknown").

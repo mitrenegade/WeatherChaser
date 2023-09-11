@@ -10,7 +10,8 @@ import SnapKit
 
 class ViewController: UIViewController {
 
-    private let apiService = APIService()
+    private let apiService: APIService
+    private let imageService: ImageService
 
     private let textfield: UITextField = {
         let view = UITextField(frame: .zero)
@@ -26,6 +27,21 @@ class ViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
+
+    // MARK:
+
+    init(apiService: APIService) {
+        self.apiService = apiService
+        self.imageService = ImageService(apiService: apiService)
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()

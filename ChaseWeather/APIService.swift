@@ -5,6 +5,7 @@
 //  Created by Bobby Ren on 9/8/23.
 //
 
+import UIKit
 import Foundation
 
 class APIService {
@@ -16,12 +17,14 @@ class APIService {
 
     enum APIError: Error {
         case invalidURL
+        case invalidImageData
         case requestError
     }
 
     enum Endpoint {
         case weather
         case geocoding
+        case icon(String)
 
         var path: String {
             switch self {
@@ -29,6 +32,8 @@ class APIService {
                 return "/data/2.5/weather/"
             case .geocoding:
                 return "/geo/1.0/direct/"
+            case .icon(let name):
+                return "/img/wn/\(name)@2x.png"
             }
         }
     }
@@ -61,7 +66,7 @@ class APIService {
         return URLRequest(url: url)
     }
 
-    private func fetchWeather(for params: [String: String]?) async throws -> CityWeather {
+    private func fetchWeather(for params: [String: String]?) async throws -> Weather {
         let request = try query(for: .weather, params: params)
         
         let (data, _) = try await URLSession.shared.data(for: request)
@@ -70,12 +75,12 @@ class APIService {
             print(string)
         }
         
-        return try decoder.decode(CityWeather.self, from: data)
+        return try decoder.decode(Weather.self, from: data)
     }
 
     // MARK: - Public
 
-    func weather(for city: String, state: String? = nil, country: String? = nil) async throws -> CityWeather {
+    func weather(for city: String, state: String? = nil, country: String? = nil) async throws -> Weather {
         var params: [String: String] = [ParamKey.appID: APIKey]
         let query: String
         if let state, let country {
@@ -87,5 +92,18 @@ class APIService {
         }
         params[ParamKey.query] = query
         return try await fetchWeather(for: params)
+    }
+
+    /// Parameters:
+    /// - name: the icon code as a string. ie, `10d` for an icon named `10d@2x.png`
+    func icon(for name: String) async throws -> UIImage {
+        let request = try query(for: .icon(name), params: nil)
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+
+        guard let image = UIImage(data: data) else {
+            throw APIError.invalidImageData
+        }
+        return image
     }
 }
