@@ -61,7 +61,12 @@ class ViewController: UIViewController {
 
         setupViews()
 
-        textfield.becomeFirstResponder()
+        if let query = getCachedQuery() {
+            textfield.text = query
+            performQuery(query)
+        } else {
+            textfield.becomeFirstResponder()
+        }
     }
 
     private func setupViews() {
@@ -134,7 +139,22 @@ extension ViewController: UITextFieldDelegate {
             return
         }
         performQuery(text)
+        cacheQuery(text)
+    }
+}
 
-        textField.text = nil
+// MARK: - Caching last entry
+extension ViewController {
+    private enum DefaultsKeys {
+        static let lastQuery = "lastQuery"
+    }
+
+    func cacheQuery(_ string: String) {
+        UserDefaults.standard.set(string, forKey: DefaultsKeys.lastQuery)
+        UserDefaults.standard.synchronize()
+    }
+
+    func getCachedQuery() -> String? {
+        UserDefaults.standard.string(forKey: DefaultsKeys.lastQuery)
     }
 }
