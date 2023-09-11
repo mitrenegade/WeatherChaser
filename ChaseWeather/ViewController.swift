@@ -59,6 +59,7 @@ class ViewController: UIViewController {
         Task {
             do {
                 let result = try await apiService.weather(for: text)
+                label.text = result.description
             } catch let error {
                 print("Query Error \(error)")
             }

@@ -1,0 +1,44 @@
+{
+  "coord": {
+    "lon": -106.0008,
+    "lat": 34.5003
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 299.53,
+    "feels_like": 299.53,
+    "temp_min": 299.53,
+    "temp_max": 299.53,
+    "pressure": 1012,
+    "humidity": 29,
+    "sea_level": 1012,
+    "grnd_level": 820
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 4.97,
+    "deg": 292,
+    "gust": 7.9
+  },
+  "clouds": {
+    "all": 69
+  },
+  "dt": 1694468509,
+  "sys": {
+    "country": "US",
+    "sunrise": 1694436253,
+    "sunset": 1694481449
+  },
+  "timezone": -21600,
+  "id": 5481136,
+  "name": "New Mexico",
+  "cod": 200
+}
