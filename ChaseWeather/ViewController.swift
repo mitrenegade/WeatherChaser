@@ -22,6 +22,12 @@ class ViewController: UIViewController {
         return view
     }()
 
+    private let button: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
+        return button
+    }()
+
     private let label: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
@@ -61,6 +67,10 @@ class ViewController: UIViewController {
 
         setupViews()
 
+        button.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapButton()
+        }), for: .touchUpInside)
+
         if let query = getCachedQuery() {
             textfield.text = query
             performQuery(query)
@@ -75,11 +85,18 @@ class ViewController: UIViewController {
         view.addSubview(textfield)
         textfield.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
-            $0.right.equalToSuperview().offset(-20)
+            $0.right.equalToSuperview().offset(-80)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
             $0.height.equalTo(40)
         }
         textfield.delegate = self
+
+        view.addSubview(button)
+        button.snp.makeConstraints {
+            $0.centerY.equalTo(textfield)
+            $0.leading.equalTo(textfield.snp.trailing).offset(8)
+            $0.width.height.equalTo(40)
+        }
 
         view.addSubview(imageView)
         imageView.snp.makeConstraints {
@@ -124,6 +141,10 @@ class ViewController: UIViewController {
                 activityIndicator.stopAnimating()
             }
         }
+
+    }
+
+    private func didTapButton() {
 
     }
 }
