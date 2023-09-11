@@ -12,6 +12,8 @@ class ImageService {
 
     private var currentImageTask: Task<UIImage, Error>?
 
+    private var imageCache = [String: UIImage]()
+
     enum ImageServiceError: Error {
         case invalidURL
         case invalidImageData
@@ -33,6 +35,11 @@ class ImageService {
         guard let url = URL(string: baseURL)?.appending(path: imagePath) else {
             throw ImageServiceError.invalidURL
         }
+
+        if let image = imageCache[imagePath] {
+            return image
+        }
+
         let request = URLRequest(url: url)
 
         let (data, _) = try await URLSession.shared.data(for: request)
@@ -40,6 +47,8 @@ class ImageService {
         guard let image = UIImage(data: data) else {
             throw ImageServiceError.invalidImageData
         }
+        imageCache[imagePath] = image
+
         return image
     }
 }

@@ -34,6 +34,12 @@ class ViewController: UIViewController {
         return imageView
     }()
 
+    private let activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.hidesWhenStopped = true
+        return view
+    }()
+
     // MARK:
 
     init(apiService: APIService = APIService(),
@@ -83,23 +89,34 @@ class ViewController: UIViewController {
             $0.top.equalTo(imageView).offset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
+
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(view)
+        }
+        activityIndicator.stopAnimating()
     }
 
     private func performQuery(_ text: String) {
+        activityIndicator.startAnimating()
+        label.text = nil
+        imageView.image = nil
         Task {
             do {
                 let result = try await apiService.weather(for: text)
                 guard let weatherDetail = result.weather.first else {
-                    // todo: show error
+                    activityIndicator.stopAnimating()
                     return
                 }
 
-                label.text = result.description
                 let image = try await imageService.icon(for: weatherDetail)
                 imageView.image = image
+                label.text = result.description
 
+                activityIndicator.stopAnimating()
             } catch let error {
-                print("Query Error \(error)")
+                label.text = "Query Error: \(error)"
+                activityIndicator.stopAnimating()
             }
         }
 
