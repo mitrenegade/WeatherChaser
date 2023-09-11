@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": -71.0598,
+    "lat": 42.3584
+  },
+  "weather": [
+    {
+      "id": 741,
+      "main": "Fog",
+      "description": "fog",
+      "icon": "50d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 295.35,
+    "feels_like": 296.03,
+    "temp_min": 293.76,
+    "temp_max": 297.4,
+    "pressure": 1016,
+    "humidity": 92
+  },
+  "visibility": 805,
+  "wind": {
+    "speed": 3.6,
+    "deg": 90
+  },
+  "clouds": {
+    "all": 100
+  },
+  "dt": 1694465766,
+  "sys": {
+    "type": 2,
+    "id": 2013408,
+    "country": "US",
+    "sunrise": 1694427586,
+    "sunset": 1694473349
+  },
+  "timezone": -14400,
+  "id": 4930956,
+  "name": "Boston",
+  "cod": 200
+}

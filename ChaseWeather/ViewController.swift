@@ -21,6 +21,12 @@ class ViewController: UIViewController {
         return view
     }()
 
+    private let label: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.numberOfLines = 0
+        return label
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,15 +46,21 @@ class ViewController: UIViewController {
             $0.height.equalTo(40)
         }
         textfield.delegate = self
+
+        view.addSubview(label)
+        label.snp.makeConstraints {
+            $0.left.right.equalTo(textfield)
+            $0.top.equalTo(textfield).offset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+        }
     }
 
     private func performQuery(_ text: String) {
         Task {
             do {
                 let result = try await apiService.weather(for: text)
-                print("Result \(String(describing: result))")
             } catch let error {
-                print("Error \(error)")
+                print("Query Error \(error)")
             }
         }
 

@@ -12,9 +12,10 @@ class APIService {
     private let APIKey = "d9db8536cc43335fcfc3f767bbc8098e"
     private let baseURL = "https://api.openweathermap.org"
 
+    // MARK: - Types
+
     enum APIError: Error {
         case invalidURL
-        case invalidResponse
         case requestError
     }
 
@@ -37,6 +38,16 @@ class APIService {
         static let query = "q"
     }
 
+    // MARK: - Properties
+
+    private let decoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }()
+
+    // MARK: - Functions
+
     private func query(for endpoint: Endpoint, params: [String: String]?) throws -> URLRequest {
         var urlComponents = URLComponents(string: baseURL)
         urlComponents?.path = endpoint.path
@@ -50,21 +61,21 @@ class APIService {
         return URLRequest(url: url)
     }
 
-    private func performRequest(_ endpoint: Endpoint, params: [String: String]?) async throws -> [String: Any] {
-        let request = try query(for: endpoint, params: params)
-
+    private func fetchWeather(for params: [String: String]?) async throws -> CityWeather {
+        let request = try query(for: .weather, params: params)
+        
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
-            return json
+        if let string = String(data: data, encoding: .utf8) {
+            print(string)
         }
-
-        throw APIError.invalidResponse
+        
+        return try decoder.decode(CityWeather.self, from: data)
     }
 
     // MARK: - Public
 
-    func weather(for city: String, state: String? = nil, country: String? = nil) async throws -> [String: Any] {
+    func weather(for city: String, state: String? = nil, country: String? = nil) async throws -> CityWeather {
         var params: [String: String] = [ParamKey.appID: APIKey]
         let query: String
         if let state, let country {
@@ -75,6 +86,6 @@ class APIService {
             query = city
         }
         params[ParamKey.query] = query
-        return try await performRequest(.weather, params: params)
+        return try await fetchWeather(for: params)
     }
 }
