@@ -10,14 +10,29 @@ import UIKit
 
 class ImageService {
 
-    private let apiService: APIService
+    enum ImageServiceError: Error {
+        case invalidURL
+        case invalidImageData
+    }
 
-    init(apiService: APIService = APIService()) {
-        self.apiService = apiService
+    private let baseURL: String = "https://openweathermap.org/img/wn"
+
+    private func request(for name: String) throws -> URLRequest {
+        let imagePath =  "\(name)@2x.png"
+        guard let url = URL(string: baseURL)?.appending(path: imagePath) else {
+            throw ImageServiceError.invalidURL
+        }
+        return URLRequest(url: url)
     }
 
     func icon(for weather: WeatherDetail) async throws -> UIImage {
-        // TODO: cache
-        try await apiService.icon(for: weather.icon)
+        let request = try request(for: weather.icon)
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+
+        guard let image = UIImage(data: data) else {
+            throw ImageServiceError.invalidImageData
+        }
+        return image
     }
 }

@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
 
         let apiService = APIService()
-        let vc = ViewController(apiService: apiService)
+        let vc = ViewController()
         window?.rootViewController = vc
     }
 

@@ -28,11 +28,18 @@ class ViewController: UIViewController {
         return label
     }()
 
+    private let imageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     // MARK:
 
-    init(apiService: APIService) {
+    init(apiService: APIService = APIService(),
+         imageService: ImageService = ImageService()) {
         self.apiService = apiService
-        self.imageService = ImageService(apiService: apiService)
+        self.imageService = imageService
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -63,10 +70,17 @@ class ViewController: UIViewController {
         }
         textfield.delegate = self
 
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints {
+            $0.centerX.equalTo(textfield)
+            $0.top.equalTo(textfield).offset(20)
+            $0.width.height.equalTo(100)
+        }
+
         view.addSubview(label)
         label.snp.makeConstraints {
             $0.left.right.equalTo(textfield)
-            $0.top.equalTo(textfield).offset(20)
+            $0.top.equalTo(imageView).offset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
     }
@@ -75,7 +89,15 @@ class ViewController: UIViewController {
         Task {
             do {
                 let result = try await apiService.weather(for: text)
+                guard let weatherDetail = result.weather.first else {
+                    // todo: show error
+                    return
+                }
+
                 label.text = result.description
+                let image = try await imageService.icon(for: weatherDetail)
+                imageView.image = image
+
             } catch let error {
                 print("Query Error \(error)")
             }

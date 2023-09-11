@@ -17,14 +17,12 @@ class APIService {
 
     enum APIError: Error {
         case invalidURL
-        case invalidImageData
         case requestError
     }
 
     enum Endpoint {
         case weather
         case geocoding
-        case icon(String)
 
         var path: String {
             switch self {
@@ -32,8 +30,6 @@ class APIService {
                 return "/data/2.5/weather/"
             case .geocoding:
                 return "/geo/1.0/direct/"
-            case .icon(let name):
-                return "/img/wn/\(name)@2x.png"
             }
         }
     }
@@ -92,18 +88,5 @@ class APIService {
         }
         params[ParamKey.query] = query
         return try await fetchWeather(for: params)
-    }
-
-    /// Parameters:
-    /// - name: the icon code as a string. ie, `10d` for an icon named `10d@2x.png`
-    func icon(for name: String) async throws -> UIImage {
-        let request = try query(for: .icon(name), params: nil)
-
-        let (data, _) = try await URLSession.shared.data(for: request)
-
-        guard let image = UIImage(data: data) else {
-            throw APIError.invalidImageData
-        }
-        return image
     }
 }
