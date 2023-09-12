@@ -31,7 +31,9 @@ class MockAPIService: APIProvider {
 
     func weather(for city: String, state: String?, country: String?) async throws -> Weather {
         let data = try loadData(for: city)
-        let weather = try JSONDecoder().decode(Weather.self, from: data)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let weather = try decoder.decode(Weather.self, from: data)
         return weather
     }
 

@@ -20,11 +20,10 @@ final class WeatherViewModelTests: XCTestCase {
         weatherViewModel = nil
     }
 
-    func testCities() throws {
-        Task {
-            let weather = try await weatherViewModel.fetchWeather(for: "sanjose")
-            XCTAssertEqual(weather.name, "San Jose")
-        }
+    func testCities() async throws {
+        let weather = try await weatherViewModel.fetchWeather(for: "sanjose")
+        XCTAssertEqual(weather.name, "San Jose")
+        XCTAssertEqual(weather.sunriseString, "06:46:18")
     }
 
 }
