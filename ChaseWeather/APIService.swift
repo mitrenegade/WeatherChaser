@@ -9,8 +9,18 @@ import UIKit
 import Foundation
 import CoreLocation
 
+/// An interface for the OpenWeather API
 protocol APIProvider {
+    /// Fetches the weather based on location
+    /// - Parameters:
+    ///     - city: a nonoptional string for the name of the city
+    ///     - state: an optional string for the state
+    ///     - country: an optional string for the country
     func weather(for city: String, state: String?, country: String?) async throws -> Weather
+
+    /// Fetches the name of the current location based on GPS coordinates
+    /// - Parameters:
+    ///     - location: a coordinate containing latitute and longitude
     func reverseGeocode(for location: CLLocation) async throws -> String
 }
 

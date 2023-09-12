@@ -10,16 +10,22 @@ import UIKit
 
 class ImageService {
 
-    private var currentImageTask: Task<UIImage, Error>?
-
-    private var imageCache = [String: UIImage]()
+    // MARK: - Types
 
     enum ImageServiceError: Error {
         case invalidURL
         case invalidImageData
     }
 
+    // MARK: - Properties
+
+    private var currentImageTask: Task<UIImage, Error>?
+
+    private var imageCache = [String: UIImage]()
+
     private let baseURL: String = "https://openweathermap.org/img/wn"
+
+    // MARK: - Public functions
 
     func icon(for weather: WeatherDetail) async throws -> UIImage {
         let task = Task {
@@ -29,6 +35,8 @@ class ImageService {
         currentImageTask = task
         return try await task.value
     }
+
+    // MARK: - Private functions
 
     private func fetchImage(name: String) async throws -> UIImage {
         let imagePath =  "\(name)@2x.png"

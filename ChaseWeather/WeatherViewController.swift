@@ -119,9 +119,8 @@ class WeatherViewController: UIViewController {
     }
 
     /// Query the API for weather given a string
-    /// Parameters:
-    /// - text: the name of the location to fetch the query. Note: this currently works only for cities
-    ///     or a string that gets interpreted by the API as a city. There is no state/country input.
+    /// - Parameters:
+    ///     - text: the search string entered by the user to fetch location
     func performQuery(_ text: String) {
         cacheQuery(text)
         activityIndicator.startAnimating()
@@ -135,7 +134,7 @@ class WeatherViewController: UIViewController {
                     return
                 }
 
-                let image = try await viewModel.fetchImage(for: weatherDetail)
+                let image = try await viewModel.fetchWeatherIcon(for: weatherDetail)
                 imageView.image = image
                 label.text = result.description
 

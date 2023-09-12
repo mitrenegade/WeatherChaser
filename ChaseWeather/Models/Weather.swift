@@ -42,23 +42,21 @@ struct System: Codable {
 
 struct Weather: Codable {
 
-    // decode top level properties
+    // MARK: - Top level properties
     let name: String
     let id: Int
     let timezone: Int
     let cod: Int
     let visibility: Int
 
-    // decode top level objects
+    // MARK: - Top level objects
     let coord: Location
     let weather: [WeatherDetail]
     let wind: Wind
     let main: TemperaturePressure
-
-    // decode from `sys` block using a custom decoding strategy
     let sys: System?
 
-    // Calculated variables
+    // MARK: - Calculated variables
     var sunriseString: String? {
         guard let sunrise = sys?.sunrise else {
             return nil
@@ -78,7 +76,6 @@ struct Weather: Codable {
         let time = Date(timeIntervalSince1970: sunset)
         return formatter.string(from: time)
     }
-
 }
 
 extension Weather: CustomStringConvertible {

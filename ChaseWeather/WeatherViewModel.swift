@@ -16,11 +16,16 @@ protocol WeatherViewModelDelegate: AnyObject {
 }
 
 class WeatherViewModel {
+
+    // MARK: - Properties
+
     private let apiService: APIProvider
     private let imageService: ImageService
     private let permissionService: PermissionService
 
     weak var delegate: WeatherViewModelDelegate?
+
+    // MARK: -
 
     init(apiService: APIProvider = APIService(),
          imageService: ImageService = ImageService(),
@@ -32,14 +37,24 @@ class WeatherViewModel {
         permissionService.delegate = self
     }
 
+    // MARK: - Public functions
+
+    /// Requests the weather for a given location.
+    /// - Parameters:
+    ///     - city: the name of the city
     func fetchWeather(for city: String) async throws -> Weather {
+        // TODO: use state and country when UI is available
         try await apiService.weather(for: city, state: nil, country: nil)
     }
 
-    func fetchImage(for weatherDetail: WeatherDetail) async throws -> UIImage {
+    /// Requests a weather icon.
+    /// - Parameters:
+    ///     - weatherDetail: an object that contains the icon's name
+    func fetchWeatherIcon(for weatherDetail: WeatherDetail) async throws -> UIImage {
         try await imageService.icon(for: weatherDetail)
     }
 
+    /// Fetches the current GPS location or starts the process to request the permission.
     func fetchCurrentLocation() {
         permissionService.queryCurrentLocation()
     }
