@@ -1,13 +1,13 @@
 //
 //  MockAPIService.swift
-//  ChaseWeatherTests
+//  WeatherChaserTests
 //
 //  Created by Bobby Ren on 9/11/23.
 //
 
 import Foundation
 import CoreLocation
-@testable import ChaseWeather
+@testable import WeatherChaser
 
 class MockAPIService: APIProvider {
 

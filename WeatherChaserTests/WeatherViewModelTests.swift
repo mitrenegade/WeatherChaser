@@ -1,12 +1,12 @@
 //
-//  ChaseWeatherTests.swift
-//  ChaseWeatherTests
+//  WeatherChaserTests.swift
+//  WeatherChaserTests
 //
 //  Created by Bobby Ren on 9/8/23.
 //
 
 import XCTest
-@testable import ChaseWeather
+@testable import WeatherChaser
 
 final class WeatherViewModelTests: XCTestCase {
 

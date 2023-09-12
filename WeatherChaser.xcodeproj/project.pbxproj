@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26C322B74B28D3A77627681E /* Pods_WeatherChaser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982FBC1A3B26753A4012C895 /* Pods_WeatherChaser.framework */; };
 		8EED7D7C2AABA69A00E43E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D7B2AABA69A00E43E6E /* AppDelegate.swift */; };
 		8EED7D7E2AABA69A00E43E6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D7D2AABA69A00E43E6E /* SceneDelegate.swift */; };
 		8EED7D802AABA69A00E43E6E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D7F2AABA69A00E43E6E /* WeatherViewController.swift */; };
@@ -14,8 +15,6 @@
 		8EED7D852AABA69C00E43E6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EED7D842AABA69C00E43E6E /* Assets.xcassets */; };
 		8EED7D882AABA69C00E43E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED7D862AABA69C00E43E6E /* LaunchScreen.storyboard */; };
 		8EED7D932AABA69C00E43E6E /* WeatherViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D922AABA69C00E43E6E /* WeatherViewModelTests.swift */; };
-		8EED7D9D2AABA69C00E43E6E /* ChaseWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D9C2AABA69C00E43E6E /* ChaseWeatherUITests.swift */; };
-		8EED7D9F2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D9E2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift */; };
 		8EED7DAC2AABA8CE00E43E6E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DAB2AABA8CE00E43E6E /* APIService.swift */; };
 		8EED7DAF2AAFB36300E43E6E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DAE2AAFB36300E43E6E /* Weather.swift */; };
 		8EED7DB12AAFB65C00E43E6E /* sanjose.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EED7DB02AAFB65C00E43E6E /* sanjose.json */; };
@@ -27,7 +26,6 @@
 		8EED7DBD2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DBC2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift */; };
 		8EED7DBF2AAFEAB000E43E6E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DBE2AAFEAB000E43E6E /* WeatherViewModel.swift */; };
 		8EED7DC12AAFF49A00E43E6E /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DC02AAFF49A00E43E6E /* MockAPIService.swift */; };
-		F403E80577B6D98CBC0B3C67 /* Pods_ChaseWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EE6AA9F06C29D4260C6ECE /* Pods_ChaseWeather.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,17 +36,11 @@
 			remoteGlobalIDString = 8EED7D772AABA69A00E43E6E;
 			remoteInfo = ChaseWeather;
 		};
-		8EED7D992AABA69C00E43E6E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8EED7D702AABA69A00E43E6E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8EED7D772AABA69A00E43E6E;
-			remoteInfo = ChaseWeather;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8EED7D782AABA69A00E43E6E /* ChaseWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChaseWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		397379C654C397DEC8612926 /* Pods-WeatherChaser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherChaser.debug.xcconfig"; path = "Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser.debug.xcconfig"; sourceTree = "<group>"; };
+		8EED7D782AABA69A00E43E6E /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EED7D7B2AABA69A00E43E6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EED7D7D2AABA69A00E43E6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8EED7D7F2AABA69A00E43E6E /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -56,11 +48,8 @@
 		8EED7D842AABA69C00E43E6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EED7D872AABA69C00E43E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EED7D892AABA69C00E43E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EED7D8E2AABA69C00E43E6E /* ChaseWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaseWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EED7D8E2AABA69C00E43E6E /* WeatherChaserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherChaserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EED7D922AABA69C00E43E6E /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
-		8EED7D982AABA69C00E43E6E /* ChaseWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaseWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EED7D9C2AABA69C00E43E6E /* ChaseWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseWeatherUITests.swift; sourceTree = "<group>"; };
-		8EED7D9E2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8EED7DAB2AABA8CE00E43E6E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		8EED7DAE2AAFB36300E43E6E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		8EED7DB02AAFB65C00E43E6E /* sanjose.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sanjose.json; sourceTree = "<group>"; };
@@ -72,9 +61,10 @@
 		8EED7DBC2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeLocation.swift; sourceTree = "<group>"; };
 		8EED7DBE2AAFEAB000E43E6E /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		8EED7DC02AAFF49A00E43E6E /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
+		982FBC1A3B26753A4012C895 /* Pods_WeatherChaser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherChaser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3A709814F9285AB7297986 /* Pods-ChaseWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaseWeather.release.xcconfig"; path = "Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather.release.xcconfig"; sourceTree = "<group>"; };
-		A7EE6AA9F06C29D4260C6ECE /* Pods_ChaseWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChaseWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9913FE551A5BE5DF086F92 /* Pods-ChaseWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaseWeather.debug.xcconfig"; path = "Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		C20DB45966F5D0AE2C289213 /* Pods-WeatherChaser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherChaser.release.xcconfig"; path = "Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,18 +72,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F403E80577B6D98CBC0B3C67 /* Pods_ChaseWeather.framework in Frameworks */,
+				26C322B74B28D3A77627681E /* Pods_WeatherChaser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8EED7D8B2AABA69C00E43E6E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8EED7D952AABA69C00E43E6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,7 +89,7 @@
 		706D1A415A068427413D60B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A7EE6AA9F06C29D4260C6ECE /* Pods_ChaseWeather.framework */,
+				982FBC1A3B26753A4012C895 /* Pods_WeatherChaser.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,6 +99,8 @@
 			children = (
 				AA9913FE551A5BE5DF086F92 /* Pods-ChaseWeather.debug.xcconfig */,
 				9D3A709814F9285AB7297986 /* Pods-ChaseWeather.release.xcconfig */,
+				397379C654C397DEC8612926 /* Pods-WeatherChaser.debug.xcconfig */,
+				C20DB45966F5D0AE2C289213 /* Pods-WeatherChaser.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -123,9 +108,8 @@
 		8EED7D6F2AABA69A00E43E6E = {
 			isa = PBXGroup;
 			children = (
-				8EED7D7A2AABA69A00E43E6E /* ChaseWeather */,
-				8EED7D912AABA69C00E43E6E /* ChaseWeatherTests */,
-				8EED7D9B2AABA69C00E43E6E /* ChaseWeatherUITests */,
+				8EED7D7A2AABA69A00E43E6E /* WeatherChaser */,
+				8EED7D912AABA69C00E43E6E /* WeatherChaserTests */,
 				8EED7D792AABA69A00E43E6E /* Products */,
 				7B25A694333A66658F61A659 /* Pods */,
 				706D1A415A068427413D60B4 /* Frameworks */,
@@ -135,14 +119,13 @@
 		8EED7D792AABA69A00E43E6E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EED7D782AABA69A00E43E6E /* ChaseWeather.app */,
-				8EED7D8E2AABA69C00E43E6E /* ChaseWeatherTests.xctest */,
-				8EED7D982AABA69C00E43E6E /* ChaseWeatherUITests.xctest */,
+				8EED7D782AABA69A00E43E6E /* WeatherChaser.app */,
+				8EED7D8E2AABA69C00E43E6E /* WeatherChaserTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8EED7D7A2AABA69A00E43E6E /* ChaseWeather */ = {
+		8EED7D7A2AABA69A00E43E6E /* WeatherChaser */ = {
 			isa = PBXGroup;
 			children = (
 				8EED7D7B2AABA69A00E43E6E /* AppDelegate.swift */,
@@ -158,10 +141,10 @@
 				8EED7DB82AAFC42000E43E6E /* ImageService.swift */,
 				8EED7DBA2AAFDBDE00E43E6E /* PermissionService.swift */,
 			);
-			path = ChaseWeather;
+			path = WeatherChaser;
 			sourceTree = "<group>";
 		};
-		8EED7D912AABA69C00E43E6E /* ChaseWeatherTests */ = {
+		8EED7D912AABA69C00E43E6E /* WeatherChaserTests */ = {
 			isa = PBXGroup;
 			children = (
 				8EED7D922AABA69C00E43E6E /* WeatherViewModelTests.swift */,
@@ -171,16 +154,7 @@
 				8EED7DB62AAFC2A400E43E6E /* newmexico.json */,
 				8EED7DC02AAFF49A00E43E6E /* MockAPIService.swift */,
 			);
-			path = ChaseWeatherTests;
-			sourceTree = "<group>";
-		};
-		8EED7D9B2AABA69C00E43E6E /* ChaseWeatherUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8EED7D9C2AABA69C00E43E6E /* ChaseWeatherUITests.swift */,
-				8EED7D9E2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift */,
-			);
-			path = ChaseWeatherUITests;
+			path = WeatherChaserTests;
 			sourceTree = "<group>";
 		};
 		8EED7DAD2AAFB35000E43E6E /* Models */ = {
@@ -195,9 +169,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8EED7D772AABA69A00E43E6E /* ChaseWeather */ = {
+		8EED7D772AABA69A00E43E6E /* WeatherChaser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EED7DA22AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "ChaseWeather" */;
+			buildConfigurationList = 8EED7DA22AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "WeatherChaser" */;
 			buildPhases = (
 				75F8C6456F2F26AE4311EC5A /* [CP] Check Pods Manifest.lock */,
 				8EED7D742AABA69A00E43E6E /* Sources */,
@@ -209,14 +183,14 @@
 			);
 			dependencies = (
 			);
-			name = ChaseWeather;
+			name = WeatherChaser;
 			productName = ChaseWeather;
-			productReference = 8EED7D782AABA69A00E43E6E /* ChaseWeather.app */;
+			productReference = 8EED7D782AABA69A00E43E6E /* WeatherChaser.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8EED7D8D2AABA69C00E43E6E /* ChaseWeatherTests */ = {
+		8EED7D8D2AABA69C00E43E6E /* WeatherChaserTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EED7DA52AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "ChaseWeatherTests" */;
+			buildConfigurationList = 8EED7DA52AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "WeatherChaserTests" */;
 			buildPhases = (
 				8EED7D8A2AABA69C00E43E6E /* Sources */,
 				8EED7D8B2AABA69C00E43E6E /* Frameworks */,
@@ -227,28 +201,10 @@
 			dependencies = (
 				8EED7D902AABA69C00E43E6E /* PBXTargetDependency */,
 			);
-			name = ChaseWeatherTests;
+			name = WeatherChaserTests;
 			productName = ChaseWeatherTests;
-			productReference = 8EED7D8E2AABA69C00E43E6E /* ChaseWeatherTests.xctest */;
+			productReference = 8EED7D8E2AABA69C00E43E6E /* WeatherChaserTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		8EED7D972AABA69C00E43E6E /* ChaseWeatherUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8EED7DA82AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "ChaseWeatherUITests" */;
-			buildPhases = (
-				8EED7D942AABA69C00E43E6E /* Sources */,
-				8EED7D952AABA69C00E43E6E /* Frameworks */,
-				8EED7D962AABA69C00E43E6E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8EED7D9A2AABA69C00E43E6E /* PBXTargetDependency */,
-			);
-			name = ChaseWeatherUITests;
-			productName = ChaseWeatherUITests;
-			productReference = 8EED7D982AABA69C00E43E6E /* ChaseWeatherUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -267,13 +223,9 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 8EED7D772AABA69A00E43E6E;
 					};
-					8EED7D972AABA69C00E43E6E = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 8EED7D772AABA69A00E43E6E;
-					};
 				};
 			};
-			buildConfigurationList = 8EED7D732AABA69A00E43E6E /* Build configuration list for PBXProject "ChaseWeather" */;
+			buildConfigurationList = 8EED7D732AABA69A00E43E6E /* Build configuration list for PBXProject "WeatherChaser" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -286,9 +238,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EED7D772AABA69A00E43E6E /* ChaseWeather */,
-				8EED7D8D2AABA69C00E43E6E /* ChaseWeatherTests */,
-				8EED7D972AABA69C00E43E6E /* ChaseWeatherUITests */,
+				8EED7D772AABA69A00E43E6E /* WeatherChaser */,
+				8EED7D8D2AABA69C00E43E6E /* WeatherChaserTests */,
 			);
 		};
 /* End PBXProject section */
@@ -315,13 +266,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8EED7D962AABA69C00E43E6E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -340,7 +284,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ChaseWeather-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-WeatherChaser-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -353,15 +297,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -392,27 +336,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8EED7D942AABA69C00E43E6E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8EED7D9F2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift in Sources */,
-				8EED7D9D2AABA69C00E43E6E /* ChaseWeatherUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		8EED7D902AABA69C00E43E6E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8EED7D772AABA69A00E43E6E /* ChaseWeather */;
+			target = 8EED7D772AABA69A00E43E6E /* WeatherChaser */;
 			targetProxy = 8EED7D8F2AABA69C00E43E6E /* PBXContainerItemProxy */;
-		};
-		8EED7D9A2AABA69C00E43E6E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8EED7D772AABA69A00E43E6E /* ChaseWeather */;
-			targetProxy = 8EED7D992AABA69C00E43E6E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -552,14 +482,14 @@
 		};
 		8EED7DA32AABA69C00E43E6E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA9913FE551A5BE5DF086F92 /* Pods-ChaseWeather.debug.xcconfig */;
+			baseConfigurationReference = 397379C654C397DEC8612926 /* Pods-WeatherChaser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChaseWeather/Info.plist;
+				INFOPLIST_FILE = WeatherChaser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -569,7 +499,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.ChaseWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.WeatherChaser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -579,14 +509,14 @@
 		};
 		8EED7DA42AABA69C00E43E6E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D3A709814F9285AB7297986 /* Pods-ChaseWeather.release.xcconfig */;
+			baseConfigurationReference = C20DB45966F5D0AE2C289213 /* Pods-WeatherChaser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChaseWeather/Info.plist;
+				INFOPLIST_FILE = WeatherChaser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -596,7 +526,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.ChaseWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.WeatherChaser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -614,12 +544,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.ChaseWeatherTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.WeatherChaserTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChaseWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChaseWeather";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherChaser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WeatherChaser";
 			};
 			name = Debug;
 		};
@@ -633,53 +563,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.ChaseWeatherTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.WeatherChaserTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChaseWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChaseWeather";
-			};
-			name = Release;
-		};
-		8EED7DA92AABA69C00E43E6E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.ChaseWeatherUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ChaseWeather;
-			};
-			name = Debug;
-		};
-		8EED7DAA2AABA69C00E43E6E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bobbyren.chaseapp.ChaseWeatherUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ChaseWeather;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherChaser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WeatherChaser";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EED7D732AABA69A00E43E6E /* Build configuration list for PBXProject "ChaseWeather" */ = {
+		8EED7D732AABA69A00E43E6E /* Build configuration list for PBXProject "WeatherChaser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EED7DA02AABA69C00E43E6E /* Debug */,
@@ -688,7 +584,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EED7DA22AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "ChaseWeather" */ = {
+		8EED7DA22AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "WeatherChaser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EED7DA32AABA69C00E43E6E /* Debug */,
@@ -697,20 +593,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EED7DA52AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "ChaseWeatherTests" */ = {
+		8EED7DA52AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "WeatherChaserTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EED7DA62AABA69C00E43E6E /* Debug */,
 				8EED7DA72AABA69C00E43E6E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8EED7DA82AABA69C00E43E6E /* Build configuration list for PBXNativeTarget "ChaseWeatherUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8EED7DA92AABA69C00E43E6E /* Debug */,
-				8EED7DAA2AABA69C00E43E6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

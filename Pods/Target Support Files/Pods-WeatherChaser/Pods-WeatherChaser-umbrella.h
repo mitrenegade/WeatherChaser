@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_ChaseWeatherVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_ChaseWeatherVersionString[];
+FOUNDATION_EXPORT double Pods_WeatherChaserVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_WeatherChaserVersionString[];
 

@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  ChaseWeather
+//  WeatherChaser
 //
 //  Created by Bobby Ren on 9/8/23.
 //

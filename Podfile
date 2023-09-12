@@ -1,6 +1,6 @@
 use_frameworks!
 
-target 'ChaseWeather' do
+target 'WeatherChaser' do
   platform :ios, '15.1'
 
   pod 'SnapKit'

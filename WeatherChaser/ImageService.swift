@@ -1,6 +1,6 @@
 //
 //  ImageService.swift
-//  ChaseWeather
+//  WeatherChaser
 //
 //  Created by Bobby Ren on 9/11/23.
 //
