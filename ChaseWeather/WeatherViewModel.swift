@@ -11,6 +11,8 @@ import UIKit
 
 protocol WeatherViewModelDelegate: AnyObject {
     func didFinishReverseGeocode(_ city: String)
+    func didReceiveLocationError(_ error: Error)
+    func didDenyLocationPermission()
 }
 
 class WeatherViewModel {
@@ -46,15 +48,13 @@ class WeatherViewModel {
 // MARK: - GeoCoding {
 extension WeatherViewModel {
     func reverseGeocode(location: CLLocation) {
-        print("Location \(location)")
         Task {
             do {
                 let city = try await apiService.reverseGeocode(for: location)
-                print("Reverse geocode: \(city)")
                 delegate?.didFinishReverseGeocode(city)
                 permissionService.isFetchingLocation = false
-            } catch {
-                print("Geocode failed")
+            } catch let error {
+                delegate?.didReceiveLocationError(error)
             }
         }
     }
@@ -62,11 +62,16 @@ extension WeatherViewModel {
 
 // MARK: - PermissionServiceDelegate
 extension WeatherViewModel: PermissionServiceDelegate {
+    func permissionServiceDidDenyLocation(_ service: PermissionService) {
+        delegate?.didDenyLocationPermission()
+    }
+
     func permissionService(_ service: PermissionService, didUpdateLocation location: CLLocation) {
         reverseGeocode(location: location)
     }
 
     func permissionService(_ service: PermissionService, didReceiveError error: Error) {
         print("Error \(error)")
+        delegate?.didReceiveLocationError(error)
     }
 }

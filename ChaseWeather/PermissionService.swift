@@ -11,6 +11,7 @@ import CoreLocation
 protocol PermissionServiceDelegate: AnyObject {
     func permissionService(_ service: PermissionService, didUpdateLocation location: CLLocation)
     func permissionService(_ service: PermissionService, didReceiveError error: Error)
+    func permissionServiceDidDenyLocation(_ service: PermissionService)
 }
 
 class PermissionService: NSObject {
@@ -40,6 +41,8 @@ class PermissionService: NSObject {
             delegate?.permissionService(self, didUpdateLocation: currentLocation)
         } else if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
             locationManager.requestLocation()
+        } else if locationManager.authorizationStatus == .denied {
+            delegate?.permissionServiceDidDenyLocation(self)
         } else {
             requestLocationPermissions()
         }

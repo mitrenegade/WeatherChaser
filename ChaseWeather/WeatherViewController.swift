@@ -141,8 +141,7 @@ class WeatherViewController: UIViewController {
 
                 activityIndicator.stopAnimating()
             } catch {
-                /// TODO: log this error for analytics
-                label.text = "Weather could not be loaded for \(text)"
+                showError("Weather could not be loaded for \(text)")
                 activityIndicator.stopAnimating()
             }
         }
@@ -150,6 +149,13 @@ class WeatherViewController: UIViewController {
 
     private func didTapButton() {
         viewModel.fetchCurrentLocation()
+    }
+
+    private func showError(_ message: String) {
+        /// TODO: log this error for analytics
+        textfield.text = nil
+        imageView.image = nil
+        label.text = message
     }
 }
 
@@ -184,6 +190,18 @@ extension WeatherViewController {
 
 // MARK: - WeatherViewModelDelegate
 extension WeatherViewController: WeatherViewModelDelegate {
+    func didReceiveLocationError(_ error: Error) {
+        DispatchQueue.main.async {
+            self.showError("Could not fetch your current location. Error: \(error)")
+        }
+    }
+
+    func didDenyLocationPermission() {
+        DispatchQueue.main.async {
+            self.showError("You have disabled permissions for location. Please enabled it in your settings app.")
+        }
+    }
+
     func didFinishReverseGeocode(_ city: String) {
         // geocoding happens on a background thread
         DispatchQueue.main.async {
