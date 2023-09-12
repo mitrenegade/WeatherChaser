@@ -7,11 +7,17 @@
 
 import UIKit
 import SnapKit
+import CoreLocation
 
 class ViewController: UIViewController {
 
     private let apiService: APIService
     private let imageService: ImageService
+    private lazy var permissionService = {
+        let service = PermissionService()
+        service.delegate = self
+        return service
+    }()
 
     private let textfield: UITextField = {
         let view = UITextField(frame: .zero)
@@ -107,7 +113,8 @@ class ViewController: UIViewController {
 
         view.addSubview(label)
         label.snp.makeConstraints {
-            $0.left.right.equalTo(textfield)
+            $0.leading.equalTo(textfield)
+            $0.trailing.equalTo(button)
             $0.top.equalTo(imageView).offset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
@@ -145,7 +152,9 @@ class ViewController: UIViewController {
     }
 
     private func didTapButton() {
-
+        if let location = permissionService.queryCurrentLocation() {
+            reverseGeoCode(location: location)
+        }
     }
 }
 
@@ -164,6 +173,14 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - GeoCoding {
+extension ViewController {
+    func reverseGeoCode(location: CLLocation) {
+        print("Location \(location)")
+    }
+
+}
+
 // MARK: - Caching last entry
 extension ViewController {
     private enum DefaultsKeys {
@@ -177,5 +194,15 @@ extension ViewController {
 
     func getCachedQuery() -> String? {
         UserDefaults.standard.string(forKey: DefaultsKeys.lastQuery)
+    }
+}
+
+extension ViewController: PermissionServiceDelegate {
+    func permissionService(_ service: PermissionService, didUpdateLocation location: CLLocation) {
+        reverseGeoCode(location: location)
+    }
+
+    func permissionService(_ service: PermissionService, didReceiveError error: Error) {
+        print("Error \(error)")
     }
 }
