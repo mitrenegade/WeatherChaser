@@ -52,6 +52,7 @@ extension WeatherViewModel {
                 let city = try await apiService.reverseGeocode(for: location)
                 print("Reverse geocode: \(city)")
                 delegate?.didFinishReverseGeocode(city)
+                permissionService.isFetchingLocation = false
             } catch {
                 print("Geocode failed")
             }

@@ -13,7 +13,7 @@
 		8EED7D832AABA69A00E43E6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED7D812AABA69A00E43E6E /* Main.storyboard */; };
 		8EED7D852AABA69C00E43E6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EED7D842AABA69C00E43E6E /* Assets.xcassets */; };
 		8EED7D882AABA69C00E43E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED7D862AABA69C00E43E6E /* LaunchScreen.storyboard */; };
-		8EED7D932AABA69C00E43E6E /* ChaseWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D922AABA69C00E43E6E /* ChaseWeatherTests.swift */; };
+		8EED7D932AABA69C00E43E6E /* WeatherViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D922AABA69C00E43E6E /* WeatherViewModelTests.swift */; };
 		8EED7D9D2AABA69C00E43E6E /* ChaseWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D9C2AABA69C00E43E6E /* ChaseWeatherUITests.swift */; };
 		8EED7D9F2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7D9E2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift */; };
 		8EED7DAC2AABA8CE00E43E6E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DAB2AABA8CE00E43E6E /* APIService.swift */; };
@@ -26,6 +26,7 @@
 		8EED7DBB2AAFDBDE00E43E6E /* PermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DBA2AAFDBDE00E43E6E /* PermissionService.swift */; };
 		8EED7DBD2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DBC2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift */; };
 		8EED7DBF2AAFEAB000E43E6E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DBE2AAFEAB000E43E6E /* WeatherViewModel.swift */; };
+		8EED7DC12AAFF49A00E43E6E /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DC02AAFF49A00E43E6E /* MockAPIService.swift */; };
 		F403E80577B6D98CBC0B3C67 /* Pods_ChaseWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EE6AA9F06C29D4260C6ECE /* Pods_ChaseWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +57,7 @@
 		8EED7D872AABA69C00E43E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EED7D892AABA69C00E43E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EED7D8E2AABA69C00E43E6E /* ChaseWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaseWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EED7D922AABA69C00E43E6E /* ChaseWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseWeatherTests.swift; sourceTree = "<group>"; };
+		8EED7D922AABA69C00E43E6E /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
 		8EED7D982AABA69C00E43E6E /* ChaseWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaseWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EED7D9C2AABA69C00E43E6E /* ChaseWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseWeatherUITests.swift; sourceTree = "<group>"; };
 		8EED7D9E2AABA69C00E43E6E /* ChaseWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		8EED7DBA2AAFDBDE00E43E6E /* PermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionService.swift; sourceTree = "<group>"; };
 		8EED7DBC2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeLocation.swift; sourceTree = "<group>"; };
 		8EED7DBE2AAFEAB000E43E6E /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		8EED7DC02AAFF49A00E43E6E /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
 		9D3A709814F9285AB7297986 /* Pods-ChaseWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaseWeather.release.xcconfig"; path = "Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather.release.xcconfig"; sourceTree = "<group>"; };
 		A7EE6AA9F06C29D4260C6ECE /* Pods_ChaseWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChaseWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9913FE551A5BE5DF086F92 /* Pods-ChaseWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaseWeather.debug.xcconfig"; path = "Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,11 +164,12 @@
 		8EED7D912AABA69C00E43E6E /* ChaseWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
-				8EED7D922AABA69C00E43E6E /* ChaseWeatherTests.swift */,
+				8EED7D922AABA69C00E43E6E /* WeatherViewModelTests.swift */,
 				8EED7DB02AAFB65C00E43E6E /* sanjose.json */,
 				8EED7DB22AAFB67A00E43E6E /* boston.json */,
 				8EED7DB42AAFB6CC00E43E6E /* mexicocity.json */,
 				8EED7DB62AAFC2A400E43E6E /* newmexico.json */,
+				8EED7DC02AAFF49A00E43E6E /* MockAPIService.swift */,
 			);
 			path = ChaseWeatherTests;
 			sourceTree = "<group>";
@@ -384,7 +387,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EED7D932AABA69C00E43E6E /* ChaseWeatherTests.swift in Sources */,
+				8EED7DC12AAFF49A00E43E6E /* MockAPIService.swift in Sources */,
+				8EED7D932AABA69C00E43E6E /* WeatherViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
