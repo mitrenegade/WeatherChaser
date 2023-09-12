@@ -100,7 +100,7 @@ class WeatherViewController: UIViewController {
         view.addSubview(imageView)
         imageView.snp.makeConstraints {
             $0.centerX.equalTo(textfield)
-            $0.top.equalTo(textfield).offset(20)
+            $0.top.equalTo(textfield.snp.bottom).offset(20)
             $0.width.height.equalTo(100)
         }
 
@@ -108,8 +108,7 @@ class WeatherViewController: UIViewController {
         label.snp.makeConstraints {
             $0.leading.equalTo(textfield)
             $0.trailing.equalTo(button)
-            $0.top.equalTo(imageView).offset(20)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            $0.top.equalTo(imageView.snp.bottom).offset(20)
         }
 
         view.addSubview(activityIndicator)
@@ -119,6 +118,10 @@ class WeatherViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
 
+    /// Query the API for weather given a string
+    /// Parameters:
+    /// - text: the name of the location to fetch the query. Note: this currently works only for cities
+    ///     or a string that gets interpreted by the API as a city. There is no state/country input.
     func performQuery(_ text: String) {
         cacheQuery(text)
         activityIndicator.startAnimating()
@@ -137,8 +140,9 @@ class WeatherViewController: UIViewController {
                 label.text = result.description
 
                 activityIndicator.stopAnimating()
-            } catch let error {
-                label.text = "Query Error: \(error)"
+            } catch {
+                /// TODO: log this error for analytics
+                label.text = "Weather could not be loaded for \(text)"
                 activityIndicator.stopAnimating()
             }
         }

@@ -23,8 +23,8 @@ class APIService: APIProvider {
 
     enum APIError: Error {
         case invalidURL
-        case requestError
         case geocodeError
+        case decodeError
     }
 
     enum Endpoint {
@@ -96,7 +96,14 @@ class APIService: APIProvider {
         }
         let params: [String: String] = [ParamKey.query: query]
         let data = try await fetch(.weather, params: params)
-        return try decoder.decode(Weather.self, from: data)
+        do {
+            let weather = try decoder.decode(Weather.self, from: data)
+            return weather
+        } catch _ as Swift.DecodingError {
+            // this error is used to track issues where the API may no longer be compatible
+            // but the app should handle it cleanly
+            throw APIError.decodeError
+        }
     }
 
     func reverseGeocode(for location: CLLocation) async throws -> String {
