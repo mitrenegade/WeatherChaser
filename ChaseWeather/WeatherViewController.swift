@@ -9,15 +9,9 @@ import UIKit
 import SnapKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
 
-    private let apiService: APIService
-    private let imageService: ImageService
-    private lazy var permissionService = {
-        let service = PermissionService()
-        service.delegate = self
-        return service
-    }()
+    private let viewModel: WeatherViewModel
 
     private let textfield: UITextField = {
         let view = UITextField(frame: .zero)
@@ -54,12 +48,11 @@ class ViewController: UIViewController {
 
     // MARK:
 
-    init(apiService: APIService = APIService(),
-         imageService: ImageService = ImageService()) {
-        self.apiService = apiService
-        self.imageService = imageService
-
+    init(viewModel: WeatherViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+
+        viewModel.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -77,8 +70,9 @@ class ViewController: UIViewController {
             self?.didTapButton()
         }), for: .touchUpInside)
 
-        if let query = getCachedQuery() {
-            autoQuery(query)
+        if let oldText = getCachedQuery() {
+            textfield.text = oldText
+            performQuery(oldText)
         } else {
             textfield.becomeFirstResponder()
         }
@@ -125,26 +119,20 @@ class ViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
 
-    private func autoQuery(_ text: String) {
-        textfield.text = text
-        performQuery(text)
-    }
-
-    private func performQuery(_ text: String) {
+    func performQuery(_ text: String) {
         cacheQuery(text)
-
         activityIndicator.startAnimating()
         label.text = nil
         imageView.image = nil
         Task {
             do {
-                let result = try await apiService.weather(for: text)
+                let result = try await viewModel.fetchWeather(for: text)
                 guard let weatherDetail = result.weather.first else {
                     activityIndicator.stopAnimating()
                     return
                 }
 
-                let image = try await imageService.icon(for: weatherDetail)
+                let image = try await viewModel.fetchImage(for: weatherDetail)
                 imageView.image = image
                 label.text = result.description
 
@@ -154,17 +142,14 @@ class ViewController: UIViewController {
                 activityIndicator.stopAnimating()
             }
         }
-
     }
 
     private func didTapButton() {
-        if let location = permissionService.queryCurrentLocation() {
-            reverseGeocode(location: location)
-        }
+        viewModel.fetchCurrentLocation()
     }
 }
 
-extension ViewController: UITextFieldDelegate {
+extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -178,24 +163,8 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - GeoCoding {
-extension ViewController {
-    func reverseGeocode(location: CLLocation) {
-        print("Location \(location)")
-        Task {
-            do {
-                let city = try await apiService.reverseGeocode(for: location)
-                print("Reverse geocode: \(city)")
-                autoQuery(city)
-            } catch {
-                print("Geocode failed")
-            }
-        }
-    }
-}
-
 // MARK: - Caching last entry
-extension ViewController {
+extension WeatherViewController {
     private enum DefaultsKeys {
         static let lastQuery = "lastQuery"
     }
@@ -209,12 +178,12 @@ extension ViewController {
     }
 }
 
-extension ViewController: PermissionServiceDelegate {
-    func permissionService(_ service: PermissionService, didUpdateLocation location: CLLocation) {
-        reverseGeocode(location: location)
-    }
-
-    func permissionService(_ service: PermissionService, didReceiveError error: Error) {
-        print("Error \(error)")
+// MARK: - WeatherViewModelDelegate
+extension WeatherViewController: WeatherViewModelDelegate {
+    func didFinishReverseGeocode(_ city: String) {
+        // geocoding happens on a background thread
+        DispatchQueue.main.async {
+            self.performQuery(city)
+        }
     }
 }

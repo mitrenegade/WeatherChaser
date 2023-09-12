@@ -9,7 +9,12 @@ import UIKit
 import Foundation
 import CoreLocation
 
-class APIService {
+protocol APIProvider {
+    func weather(for city: String, state: String?, country: String?) async throws -> Weather
+    func reverseGeocode(for location: CLLocation) async throws -> String
+}
+
+class APIService: APIProvider {
 
     private let APIKey = "d9db8536cc43335fcfc3f767bbc8098e"
     private let baseURL = "https://api.openweathermap.org"
