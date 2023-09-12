@@ -21,6 +21,8 @@ class PermissionService: NSObject {
 
     private var currentLocation: CLLocation?
 
+    private var fetchingLocation = false
+
     override init() {
         locationManager = CLLocationManager()
         super.init()
@@ -32,12 +34,14 @@ class PermissionService: NSObject {
         locationManager.requestAlwaysAuthorization()
     }
 
-    func queryCurrentLocation() -> CLLocation? {
+    func queryCurrentLocation() {
+        fetchingLocation = true
         if let currentLocation {
-            return currentLocation
+            delegate?.permissionService(self, didUpdateLocation: currentLocation)
+        } else if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.requestLocation()
         } else {
             requestLocationPermissions()
-            return nil
         }
     }
 }
@@ -57,7 +61,9 @@ extension PermissionService: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
-            manager.requestLocation()
+            if fetchingLocation {
+                manager.requestLocation()
+            }
         default:
             print("no authorization: \(manager.authorizationStatus)")
         }

@@ -39,9 +39,7 @@ class WeatherViewModel {
     }
 
     func fetchCurrentLocation() {
-        if let location = permissionService.queryCurrentLocation() {
-            reverseGeocode(location: location)
-        }
+        permissionService.queryCurrentLocation()
     }
 }
 

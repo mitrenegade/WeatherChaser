@@ -183,6 +183,7 @@ extension WeatherViewController: WeatherViewModelDelegate {
     func didFinishReverseGeocode(_ city: String) {
         // geocoding happens on a background thread
         DispatchQueue.main.async {
+            self.textfield.text = city
             self.performQuery(city)
         }
     }
