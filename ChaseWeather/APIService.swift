@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import CoreLocation
 
 class APIService {
 
@@ -18,6 +19,7 @@ class APIService {
     enum APIError: Error {
         case invalidURL
         case requestError
+        case geocodeError
     }
 
     enum Endpoint {
@@ -27,9 +29,9 @@ class APIService {
         var path: String {
             switch self {
             case .weather:
-                return "/data/2.5/weather/"
+                return "/data/2.5/weather"
             case .geocoding:
-                return "/geo/1.0/direct/"
+                return "/geo/1.0/reverse"
             }
         }
     }
@@ -37,6 +39,9 @@ class APIService {
     enum ParamKey {
         static let appID = "appid"
         static let query = "q"
+        static let lat = "lat"
+        static let lon = "lon"
+        static let limit = "limit"
     }
 
     // MARK: - Properties
@@ -49,10 +54,13 @@ class APIService {
 
     // MARK: - Functions
 
-    private func query(for endpoint: Endpoint, params: [String: String]?) throws -> URLRequest {
+    private func query(for endpoint: Endpoint, params: [String: String]) throws -> URLRequest {
+        var allParams = params
+        allParams[ParamKey.appID] = APIKey
+
         var urlComponents = URLComponents(string: baseURL)
         urlComponents?.path = endpoint.path
-        urlComponents?.queryItems = params?.map({ key, val -> URLQueryItem in
+        urlComponents?.queryItems = allParams.map({ key, val -> URLQueryItem in
             URLQueryItem(name: key, value: val)
         })
         guard let url = urlComponents?.url else {
@@ -62,22 +70,17 @@ class APIService {
         return URLRequest(url: url)
     }
 
-    private func fetchWeather(for params: [String: String]?) async throws -> Weather {
-        let request = try query(for: .weather, params: params)
+    private func fetch(_ endpoint: Endpoint, params: [String: String]) async throws -> Data {
+        let request = try query(for: endpoint, params: params)
         
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        if let string = String(data: data, encoding: .utf8) {
-            print(string)
-        }
-        
-        return try decoder.decode(Weather.self, from: data)
+        return data
     }
 
     // MARK: - Public
 
     func weather(for city: String, state: String? = nil, country: String? = nil) async throws -> Weather {
-        var params: [String: String] = [ParamKey.appID: APIKey]
         let query: String
         if let state, let country {
             query = [city, state, country].joined(separator: ",")
@@ -86,7 +89,21 @@ class APIService {
         } else {
             query = city
         }
-        params[ParamKey.query] = query
-        return try await fetchWeather(for: params)
+        let params: [String: String] = [ParamKey.query: query]
+        let data = try await fetch(.weather, params: params)
+        return try decoder.decode(Weather.self, from: data)
+    }
+
+    func reverseGeocode(for location: CLLocation) async throws -> String {
+        let params: [String: String] = [ParamKey.lat: "\(location.coordinate.latitude)",
+                                        ParamKey.lon: "\(location.coordinate.longitude)",
+                                        ParamKey.limit: "1"]
+
+        let data = try await fetch(.geocoding, params: params)
+        let cities = try decoder.decode([ReverseGeocodeLocation].self, from: data)
+        guard let name = cities.first?.name else {
+            throw APIError.geocodeError
+        }
+        return name
     }
 }

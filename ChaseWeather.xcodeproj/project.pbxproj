@@ -24,6 +24,7 @@
 		8EED7DB72AAFC2A400E43E6E /* newmexico.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EED7DB62AAFC2A400E43E6E /* newmexico.json */; };
 		8EED7DB92AAFC42000E43E6E /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DB82AAFC42000E43E6E /* ImageService.swift */; };
 		8EED7DBB2AAFDBDE00E43E6E /* PermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DBA2AAFDBDE00E43E6E /* PermissionService.swift */; };
+		8EED7DBD2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED7DBC2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift */; };
 		F403E80577B6D98CBC0B3C67 /* Pods_ChaseWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EE6AA9F06C29D4260C6ECE /* Pods_ChaseWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		8EED7DB62AAFC2A400E43E6E /* newmexico.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = newmexico.json; sourceTree = "<group>"; };
 		8EED7DB82AAFC42000E43E6E /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		8EED7DBA2AAFDBDE00E43E6E /* PermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionService.swift; sourceTree = "<group>"; };
+		8EED7DBC2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeLocation.swift; sourceTree = "<group>"; };
 		9D3A709814F9285AB7297986 /* Pods-ChaseWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaseWeather.release.xcconfig"; path = "Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather.release.xcconfig"; sourceTree = "<group>"; };
 		A7EE6AA9F06C29D4260C6ECE /* Pods_ChaseWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChaseWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9913FE551A5BE5DF086F92 /* Pods-ChaseWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaseWeather.debug.xcconfig"; path = "Target Support Files/Pods-ChaseWeather/Pods-ChaseWeather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				8EED7DAE2AAFB36300E43E6E /* Weather.swift */,
+				8EED7DBC2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			files = (
 				8EED7D802AABA69A00E43E6E /* ViewController.swift in Sources */,
 				8EED7D7C2AABA69A00E43E6E /* AppDelegate.swift in Sources */,
+				8EED7DBD2AAFE6C600E43E6E /* ReverseGeocodeLocation.swift in Sources */,
 				8EED7DAC2AABA8CE00E43E6E /* APIService.swift in Sources */,
 				8EED7DBB2AAFDBDE00E43E6E /* PermissionService.swift in Sources */,
 				8EED7D7E2AABA69A00E43E6E /* SceneDelegate.swift in Sources */,

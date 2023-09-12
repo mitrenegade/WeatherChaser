@@ -96,19 +96,3 @@ extension Weather: CustomStringConvertible {
         return string
     }
 }
-
-//extension CityWeather {
-//    public init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        if let sysBlock = try? container.nestedContainer(keyedBy: SysCodingKeys.self, forKey: .sys) {
-//            country = try? sysBlock.decode(String.self, forKey: .country)
-//            sunrise = try? sysBlock.decode(TimeInterval.self, forKey: .sunrise)
-//            sunset = try? sysBlock.decode(TimeInterval.self, forKey: .sunset)
-//        }
-//
-//        name = try container.decode(String.self, forKey: .name)
-//        id = try container.decode(Int.self, forKey: .id)
-//    }
-//}
-

@@ -78,8 +78,7 @@ class ViewController: UIViewController {
         }), for: .touchUpInside)
 
         if let query = getCachedQuery() {
-            textfield.text = query
-            performQuery(query)
+            autoQuery(query)
         } else {
             textfield.becomeFirstResponder()
         }
@@ -126,7 +125,14 @@ class ViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
 
+    private func autoQuery(_ text: String) {
+        textfield.text = text
+        performQuery(text)
+    }
+
     private func performQuery(_ text: String) {
+        cacheQuery(text)
+
         activityIndicator.startAnimating()
         label.text = nil
         imageView.image = nil
@@ -153,7 +159,7 @@ class ViewController: UIViewController {
 
     private func didTapButton() {
         if let location = permissionService.queryCurrentLocation() {
-            reverseGeoCode(location: location)
+            reverseGeocode(location: location)
         }
     }
 }
@@ -169,16 +175,23 @@ extension ViewController: UITextFieldDelegate {
             return
         }
         performQuery(text)
-        cacheQuery(text)
     }
 }
 
 // MARK: - GeoCoding {
 extension ViewController {
-    func reverseGeoCode(location: CLLocation) {
+    func reverseGeocode(location: CLLocation) {
         print("Location \(location)")
+        Task {
+            do {
+                let city = try await apiService.reverseGeocode(for: location)
+                print("Reverse geocode: \(city)")
+                autoQuery(city)
+            } catch {
+                print("Geocode failed")
+            }
+        }
     }
-
 }
 
 // MARK: - Caching last entry
@@ -189,7 +202,6 @@ extension ViewController {
 
     func cacheQuery(_ string: String) {
         UserDefaults.standard.set(string, forKey: DefaultsKeys.lastQuery)
-        UserDefaults.standard.synchronize()
     }
 
     func getCachedQuery() -> String? {
@@ -199,7 +211,7 @@ extension ViewController {
 
 extension ViewController: PermissionServiceDelegate {
     func permissionService(_ service: PermissionService, didUpdateLocation location: CLLocation) {
-        reverseGeoCode(location: location)
+        reverseGeocode(location: location)
     }
 
     func permissionService(_ service: PermissionService, didReceiveError error: Error) {
